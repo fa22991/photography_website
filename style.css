@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+}
+
+h1{
+    font-family:'Bodoni Moda';
+    font-size: 3rem;
+    width:100%;
+    margin: 0;
+    color: #130303;
+
+}
+body{
+    background: #F5E3E0;
+}
+
+ul{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    
+}
+.nav ul li{
+text-decoration:none;
+list-style-type:none;
+color:#130303;
+font-family:"Bodoni Moda";
+margin-top: 5%;
+}
+
+.nav ul li:hover{
+    background:#b09c98;
+    padding:0.5%;
+    text-align:center;
+    border-radius:5%;
+    color:white;
+}
+
+img{
+    object-fit: cover;
+    max-width:200px;
+}
+
+.hero {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 90%; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.hero > div {
+  flex: 1;
+}
+
+#titleblock {
+  text-align: center;
+}
+
+#titleblock h1 {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 4rem;
+  color: #130303;
+  margin: 0;
+}
+
+.left, .right {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+}
+
+.left img, .right img {
+  position: absolute;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px; 
+}
+
+#left1 {
+  width: 45%;
+  top: 5%;
+  left: 0%;
+  z-index: 1;
+}
+
+#left2 {
+  width: 50%;
+  top: 20%;
+  left: 50%;
+  z-index: 2;
+}
+
+#left3 {
+  width: 40%;
+  top: 70%;
+  left: 5%;
+  z-index: 3;
+}
+
+#right1 {
+  width: 45%;
+  top: 5%;
+  right: 0%;
+  z-index: 1;
+}
+
+#right2 {
+  width: 50%;
+  top: 20%;
+  z-index: 2;
+}
+
+#right3 {
+  width: 40%;
+  top: 50%;
+  right: 8%;
+  z-index: 3;
+}
+
+@media (max-width:600px) {
+h1{
+    font-size:1rem;
+    color:pink;
+}
+}
