@@ -99,7 +99,7 @@ imgs.forEach((image) => {
       containerAnimation: horizontalScroll,
       start: "left left",
       end: "right left",
-      scrub: 0.5,
+      scrub: 1,
     },
   });
 });
