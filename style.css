@@ -70,7 +70,6 @@ margin-left:2.5%;
   font-size: clamp(0.5rem, 4vw, 5rem);
   color: #130303;
   margin: 0;
-  width:300px;
   word-wrap:wrap;
   text-align:center;
   justify-self:center;
@@ -219,4 +218,19 @@ filter:grayscale(80%);;
 .category img.is-hovered {
   filter: grayscale(0%);
   cursor:grab;
+}
+
+@media (max-width:1060px){
+  #titleblock {
+    min-width: 0;
+  }
+
+  #titleblock h1 {
+    box-sizing: border-box;
+    margin-inline: auto;
+  }
+
+  .hero{
+    transform: translateY(-100px);
+  }
 }
