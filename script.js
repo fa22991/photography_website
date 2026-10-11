@@ -28,7 +28,7 @@ for (let i = 1; i <= 4; i++) {
       y: 0,
       opacity: 1,
       ease: "power3.out",
-      delay: 0.01 + 0.1 * i,
+      delay: 0.01 + 0.15 * i,
     }
   );
 }
@@ -64,7 +64,7 @@ gsap.to(".hero", {
 
 const imgs = gsap.utils.toArray("#gallery img");
   
-gsap.from(imgs, {      
+gsap.from(imgs, {  
     y:150,
     opacity: 0,
     duration: 1,
@@ -77,9 +77,44 @@ gsap.from(imgs, {
 const track = document.querySelector(".wrapper");
 const distance = () => track.scrollWidth - innerWidth;
 
-gsap.to(track, {
+const horizontalScroll = gsap.to(track, {
   x: () => -distance(),
   ease: "none",
-  scrollTrigger: { trigger: "#gallery", start: "top top", end: () => "+=" + distance(),
-                   pin: true, scrub: 1},
+  scrollTrigger: {
+    trigger: "#gallery",
+    start: "top top",
+    end: () => "+=" + distance(),
+    pin: true,
+    scrub: 1,
+  },
+});
+
+imgs.forEach((image) => {
+  gsap.fromTo(image, {y:0},{
+    y:20,
+    duration: 1.5,
+    ease: "none",
+    scrollTrigger: {
+      trigger: image,
+      containerAnimation: horizontalScroll,
+      start: "left left",
+      end: "right left",
+      scrub: 0.5,
+    },
+  });
+});
+
+document.querySelectorAll("#gallery .category").forEach((group) => {
+  const images = group.querySelectorAll("img");
+  
+  group.addEventListener("pointerenter", () => {
+    images.forEach((image) => image.classList.add("is-hovered"));
+    imgcategory = group.classList[0];
+    category.innerHTML = imgcategory;
+  });
+
+  group.addEventListener("pointerleave", () => {
+    images.forEach((image) => image.classList.remove("is-hovered"));
+  });
+  
 });
