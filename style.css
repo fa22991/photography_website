@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Bowlby+One&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Bowlby+One&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Yatra+One&display=swap');
+@font-face {
+  font-family: "Sprat";
+  src: url("fonts/Sprat-Black.woff") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 *{
     margin:0;
     padding: 0;
@@ -33,16 +40,13 @@ margin-left:2.5%;
     cursor:grab;
 }
 
-img{
-    object-fit: cover;
-    max-width:200px;
-}
-
 .hero {
-  position: absolute;
-  top: 20%;
-  left: 5%;
+  position: sticky;
+  top:0;
+  z-index:1;
+  margin: -15% auto 0;
   width: 90%; 
+  height:100vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between; 
@@ -58,11 +62,31 @@ img{
 }
 
 #titleblock h1 {
-  font-family: 'Bodoni moda', serif;
+  font-family: 'Sprat', serif;
   letter-spacing:5px;
-  font-size: clamp(0.5rem, 5vw, 3rem);
+  font-size: clamp(0.5rem, 5vw, 5rem);
   color: #130303;
   margin: 0;
+}
+@keyframes slide_down{
+    0%{
+      top:10px;
+      opacity:0.2;
+    }
+    50%{
+      top:20px;
+      opacity:0.5;
+    }
+    100%{
+      top:25px;
+      opacity:1;
+    }
+}
+#titleblock i{
+  position:relative;
+  top:10px;
+  animation:slide_down 0.5s infinite alternate;
+  transition:ease-in-out;
 }
 
 .left, .right {
@@ -76,6 +100,10 @@ img{
   height: auto;
   object-fit: cover;
   border-radius: 4px; 
+  outline: 1px solid rgba(255,255,255,0.5);
+  outline-offset: -8px;
+  object-fit: cover;
+  max-width:200px;
 }
 
 #left1 {
@@ -87,7 +115,7 @@ img{
 
 #left2 {
   width: 50%;
-  top: 20%;
+  top: 15%;
   left: 50%;
   z-index: 2;
 }
@@ -100,7 +128,7 @@ img{
 }
 #left4{
   width:30%;
-  top: 85%;
+  top: 80%;
   left: 50%;
   z-index: 4;
 }
@@ -119,9 +147,9 @@ img{
 }
 
 #right3 {
-  width: 30%;
+  width: 37.5%;
   top: 80%;
-  right: 15%;
+  right: 7.5%;
   z-index: 3;
 }
 
@@ -129,4 +157,47 @@ img{
   width:40%;
   top:12%;
   right:50%;
+}
+
+#gallery{
+  padding-top:10%;
+  display:flex;
+  flex-direction:row nowrap;
+  justify-content: flex-start;
+  width: 100vw;
+  height:100vh;
+  position: relative;
+  z-index: 2; 
+  margin-top:0;
+  overflow: hidden;
+  background: #F5E3E0;
+
+}
+#gallery>div{
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  row-gap:50px;
+  column-gap:80px;
+  height: 80vh;
+  flex: 0 0 auto;
+
+}
+
+#gallery>div>img{
+max-width:100px;
+object-fit:cover;
+filter:grayscale(80%);;
+}
+
+#gallery > div:not(:last-child) {
+  margin-right: 80px;
+}
+
+#category{
+  font-family:"Sprat";
+  font-size:3rem;
+  justify-self:center;
+  align-self:center;
+  margin-bottom:10%;
 }
