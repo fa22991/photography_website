@@ -106,7 +106,6 @@ imgs.forEach((image) => {
 
 document.querySelectorAll("#gallery .category").forEach((group) => {
   const images = group.querySelectorAll("img");
-  
   group.addEventListener("pointerenter", () => {
     images.forEach((image) => image.classList.add("is-hovered"));
     imgcategory = group.classList[0];
@@ -116,5 +115,28 @@ document.querySelectorAll("#gallery .category").forEach((group) => {
   group.addEventListener("pointerleave", () => {
     images.forEach((image) => image.classList.remove("is-hovered"));
   });
+  
+  const gallery = document.querySelector("#gallery");
+  images.forEach((image) => image.addEventListener("click", () => {
+    const wasEnlarged = image.classList.contains("enlarged");
+
+    document.querySelectorAll("#gallery .enlarged").forEach((selectedImage) => {
+      selectedImage.classList.remove("enlarged");
+      gsap.to(selectedImage, { scale: 1, duration: 0.25 });
+    });
+    document.querySelectorAll("#gallery .category").forEach((categoryGroup) => {
+      categoryGroup.classList.remove("image-focused");
+    });
+
+    gallery.classList.toggle("image-focused", !wasEnlarged);
+    if (!wasEnlarged) {
+      image.classList.add("enlarged");
+      group.classList.add("image-focused");
+      gsap.to(image, { scale: 2, duration: 0.25, ease: "power2.out" });
+    }
+  }));
+
+
+
   
 });
