@@ -106,6 +106,7 @@ imgs.forEach((image) => {
 
 document.querySelectorAll("#gallery .category").forEach((group) => {
   const images = group.querySelectorAll("img");
+  
   group.addEventListener("pointerenter", () => {
     images.forEach((image) => image.classList.add("is-hovered"));
     imgcategory = group.classList[0];
@@ -117,6 +118,8 @@ document.querySelectorAll("#gallery .category").forEach((group) => {
   });
   
   const gallery = document.querySelector("#gallery");
+  const wrapper = document.querySelector("#gallery .wrapper");
+  
   images.forEach((image) => image.addEventListener("click", () => {
     const wasEnlarged = image.classList.contains("enlarged");
 
@@ -143,14 +146,24 @@ document.querySelectorAll("#gallery .category").forEach((group) => {
         horizontalTrigger.end,
         horizontalTrigger.scroll() + scrollAdjustment
       );
-
+      
       horizontalTrigger.scroll(centeredScroll);
       horizontalTrigger.update();
-      gsap.to(image, { scale: 2, duration: 0.25, ease: "power2.out" });
+      gsap.to(image, { scale: 2.5, duration: 0.25, ease: "power2.out" });
     }
   }));
 
+});
 
+document.addEventListener("click", (event) => {
+  if (event.target instanceof Element && event.target.closest("#gallery img")) return;
 
-  
+  document.querySelectorAll("#gallery .enlarged").forEach((image) => {
+    image.classList.remove("enlarged");
+    gsap.to(image, { scale: 1, duration: 0.25 });
+  });
+  document.querySelectorAll("#gallery .category").forEach((group) => {
+    group.classList.remove("image-focused");
+  });
+  document.querySelector("#gallery").classList.remove("image-focused");
 });
