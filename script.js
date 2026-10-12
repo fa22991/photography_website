@@ -132,6 +132,20 @@ document.querySelectorAll("#gallery .category").forEach((group) => {
     if (!wasEnlarged) {
       image.classList.add("enlarged");
       group.classList.add("image-focused");
+      const imageCenter = image.getBoundingClientRect().left + image.getBoundingClientRect().width / 2;
+      const horizontalTrigger = horizontalScroll.scrollTrigger;
+      const scrollDistance = distance();
+      const scrollAdjustment = (imageCenter - innerWidth / 2)
+        * (horizontalTrigger.end - horizontalTrigger.start)
+        / scrollDistance;
+      const centeredScroll = gsap.utils.clamp(
+        horizontalTrigger.start,
+        horizontalTrigger.end,
+        horizontalTrigger.scroll() + scrollAdjustment
+      );
+
+      horizontalTrigger.scroll(centeredScroll);
+      horizontalTrigger.update();
       gsap.to(image, { scale: 2, duration: 0.25, ease: "power2.out" });
     }
   }));
