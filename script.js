@@ -149,7 +149,7 @@ document.querySelectorAll("#gallery .category").forEach((group) => {
       
       horizontalTrigger.scroll(centeredScroll);
       horizontalTrigger.update();
-      gsap.to(image, { scale: 2.5, duration: 0.25, ease: "power2.out" });
+      gsap.to(image, { scale: 2, duration: 0.25, ease: "power2.out" });
     }
   }));
 
